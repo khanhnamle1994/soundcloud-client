@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --hot --config ./webpack.config.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'"
+    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "",
