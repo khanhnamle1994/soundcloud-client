@@ -1,6 +1,5 @@
 import SC from 'soundcloud';
-import { CLIENT_ID, REDIRECT_URI } from '../constants/auth';
-import { setTracks as doSetTracks } from '../actions';
+import { actionCreators as trackActionCreators } from './track';
 
 const ME_SET = 'auth/ME_SET';
 
@@ -25,7 +24,7 @@ function doFetchMe(session) {
       fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
         .then((response) => response.json())
         .then((data) => {
-          dispatch(doSetMe(data));
+          dispatch(trackActionCreators.doSetTracks(data.collection));
         });
     };
 }
