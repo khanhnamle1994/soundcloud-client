@@ -11,6 +11,11 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'react-hot-loader!babel-loader'
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'eslint-loader'
     }]
   },
   resolve: {
