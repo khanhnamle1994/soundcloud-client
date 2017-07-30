@@ -1,3 +1,14 @@
+// @flow
+
+type Track = {
+  // specify your track object
+};
+
+type State = {
+  tracks: Array<Track>;
+  activeTrack: ?Track;
+};
+
 import * as actionTypes from '../constants/actionTypes';
 
 const initialState = {
@@ -5,7 +16,7 @@ const initialState = {
     activeTrack: null
 };
 
-export default function(state = initialState, action) {
+export default function(state: State = initialState, action: Object): State {
   switch (action.type) {
     case actionTypes.TRACKS_SET:
       return setTracks(state, action);
