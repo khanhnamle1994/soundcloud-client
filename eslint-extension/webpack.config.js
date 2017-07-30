@@ -7,19 +7,23 @@ module.exports = {
     './src/index.js'
   ],
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'eslint-loader'
-    }],
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'react-hot-loader!babel-loader'
-    }]
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
+    ],
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'react-hot!babel'
+      }
+    ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx']
   },
   output: {
     path: __dirname + '/dist',
@@ -31,9 +35,12 @@ module.exports = {
     hot: true,
     historyApiFallback: true
   },
+  eslint: {
+    configFile: './.eslintrc'
+  },
   plugins: [
     new webpack.ProvidePlugin({
-      'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
   ]
 };
