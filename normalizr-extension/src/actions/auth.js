@@ -1,4 +1,7 @@
 import SC from 'soundcloud';
+import { map } from 'lodash';
+import { arrayOf, normalize } from 'normalizr';
+import trackSchema from '../schemas/track';
 import * as actionTypes from '../constants/actionTypes';
 import { setTracks } from '../actions/track';
 
@@ -33,7 +36,8 @@ function fetchStream(session) {
     fetch(`//api.soundcloud.com/me/activities?limit=20&offset=0&oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
       .then((data) => {
-        dispatch(setTracks(data.collection));
+        const normalized = normalize(map(data.collection, 'origin'), arrayOf(trackSchema));
+        dispatch(setTracks(normalized.entities.tracks, normalized.result));
       });
   };
 }
