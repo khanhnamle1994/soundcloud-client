@@ -1,4 +1,4 @@
-import { observable, computed } from 'mobx';
+import { observable, computed, action } from 'mobx';
 
 class TrackStore {
 
@@ -18,6 +18,14 @@ class TrackStore {
       }
     });
     return activeTrack;
+  }
+
+  @action setTracks = (tracks) => {
+    this.tracks = tracks;
+  }
+
+  @action onPlay = (track) => {
+    this.activeTrackId = track.origin.id;
   }
 }
 
