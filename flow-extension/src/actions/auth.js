@@ -1,3 +1,13 @@
+// @flow
+
+type Track = {
+  foo: string;
+};
+
+type StreamData = {
+  collection: Array<Track>;
+};
+
 import SC from 'soundcloud';
 import * as actionTypes from '../constants/actionTypes';
 import { setTracks } from '../actions/track';
@@ -10,7 +20,7 @@ function setMe(user) {
 }
 
 export function auth() {
-  return function (dispatch) {
+  return function (dispatch: Function) {
     SC.connect().then((session) => {
       dispatch(fetchMe(session));
       dispatch(fetchStream(session));
@@ -19,7 +29,7 @@ export function auth() {
 };
 
 function fetchMe(session) {
-  return function (dispatch) {
+  return function (dispatch: Function) {
     fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
       .then((data) => {
@@ -29,10 +39,10 @@ function fetchMe(session) {
 }
 
 function fetchStream(session) {
-  return function (dispatch) {
+  return function (dispatch: Function) {
     fetch(`//api.soundcloud.com/me/activities?limit=20&offset=0&oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: StreamData) => {
         dispatch(setTracks(data.collection));
       });
   };
