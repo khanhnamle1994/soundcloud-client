@@ -1,3 +1,12 @@
+declare type Origin = {
+  stream_url: string;
+  title: string;
+};
+
 declare type Track = {
-  foo: string;
+  origin: Origin;
+};
+
+declare type User = {
+  username: string;
 };
