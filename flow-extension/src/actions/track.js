@@ -1,9 +1,5 @@
 // @flow
 
-type Track = {
-  foo: string;
-};
-
 type SetTracksAction = {
     type: string;
     tracks: Array<Track>;

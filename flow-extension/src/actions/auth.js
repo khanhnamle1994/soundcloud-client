@@ -1,9 +1,5 @@
 // @flow
 
-type Track = {
-  foo: string;
-};
-
 type StreamData = {
   collection: Array<Track>;
 };
