@@ -1,4 +1,8 @@
-# soundcloud-client
+# SoundCloud Client Favesound
+
+Inspired by [SoundCloud Client Favesound](http://www.favesound.de/), I built a running React + Redux app, which consumes the SoundCloud API. Users will be able to login with your SoundCloud account, list your latest tracks and listen to them within the browser.
+
+![react-redux-soundcloud](react-redux-soundcloud.jpg)
 
 ## Folders
 
